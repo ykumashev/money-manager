@@ -7,17 +7,18 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
+	//http://127.0.0.1:8080/aqsha/add?name=%22yernar%22&email=%22yernar@gmail.com%22
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private long id;
     private String name;
     private String email;
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
