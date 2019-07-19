@@ -1,42 +1,52 @@
 package io.aqsha.api.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
-	//http://127.0.0.1:8080/aqsha/add?name=%22yernar%22&email=%22yernar@gmail.com%22
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
-    private String name;
-    private String email;
 
-	public long getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy=GenerationType.IDEntity)    understand difference
+    private long id;  // change
+    @Column
+    @JsonIgnore
+    private String password;
+    @Column
+    private String username;
+//    @Column
+//    private String email;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+//    public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+
+    //possibly not needed
+    public long getId() {
 		return id;
 	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 
 }
